@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<canvas id="myChart"></canvas>
+<script type="text/javascript" src="./js/moment.js"></script>
+<script type="text/javascript" src="./js/Chart.js"></script>
+<script type="text/javascript" src="./js/chartjs-plugin-streaming.js"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                data: []
+            }, {
+                data: []
+            }]
+        },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'realtime'
+                    }]
+                }
+            } 
+        });
+
+// server IP : 192.168.1.1
+var connection = new WebSocket('ws://192.168.1.1:8080/ws/display');
+connection.onmessage = function (e) {
+    chart.data.datasets[0].data.push({
+        x: Date.now(),
+        y: JSON.parse(e.data)["data"]
+    });
+    chart.update();
+};
+</script>
+</body>
+</html>
