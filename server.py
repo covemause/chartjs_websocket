@@ -11,7 +11,6 @@ import tornado.web
 import tornado.ioloop
 
 class SendWebSocket(tornado.websocket.WebSocketHandler):
-    starttime = time.time()
     def open(self):
         print ('Session Opened. IP:' + self.request.remote_ip)
         self.ioloop = tornado.ioloop.IOLoop.instance()
