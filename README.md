@@ -7,3 +7,4 @@ chartjs+websocket
 クライアント側：file://display.html
 
 
+<img src="https://github.com/covemause/documents/blob/master/chartjs_websocket.JPG" />
