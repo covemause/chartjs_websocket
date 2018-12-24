@@ -40,13 +40,13 @@ connection.onmessage = function (e) {
     chart.data.datasets[0].data.push(
         {
             x: JSON.parse(e.data)["time"],
-            y: JSON.parse(e.data)["data1"]
+            y: JSON.parse(e.data)["Temperature"]
         }
     );
     chart.data.datasets[1].data.push(
         {
             x: JSON.parse(e.data)["time"],
-            y: JSON.parse(e.data)["data2"]
+            y: JSON.parse(e.data)["Humidity"]
         }
     );
     chart.update();
