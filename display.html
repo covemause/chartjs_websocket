@@ -14,7 +14,15 @@ var chart = new Chart(ctx, {
         type: 'line',
         data: {
             datasets: [{
-                data: []
+                label:'気温',
+                data: [],
+                backgroundColor: "rgba(255,229,153,0.4)",
+                borderColor: "rgba(203,10,10,1)"
+            }, {
+                label:'湿度',
+                data: [],
+                backgroundColor: "rgba(	153,204,255,0.4)",
+                borderColor: "rgba(0,127,255,1)"
             }]
         },
             options: {
@@ -29,10 +37,18 @@ var chart = new Chart(ctx, {
 // server IP : 192.168.1.1
 var connection = new WebSocket('ws://192.168.1.1:8080/ws/display');
 connection.onmessage = function (e) {
-    chart.data.datasets[0].data.push({
-        x: Date.now(),
-        y: JSON.parse(e.data)["data"]
-    });
+    chart.data.datasets[0].data.push(
+        {
+            x: JSON.parse(e.data)["time"],
+            y: JSON.parse(e.data)["data1"]
+        }
+    );
+    chart.data.datasets[1].data.push(
+        {
+            x: JSON.parse(e.data)["time"],
+            y: JSON.parse(e.data)["data2"]
+        }
+    );
     chart.update();
 };
 </script>
