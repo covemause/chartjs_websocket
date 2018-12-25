@@ -14,18 +14,18 @@ import RPi.GPIO as GPIO
 import dht11
 import datetime
 
+# initialize GPIO
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.cleanup()
+
+# read data using pin no
+instance = dht11.DHT11(pin=4)
+
 class SendWebSocket(tornado.websocket.WebSocketHandler):
     def open(self):
         print ('Session Opened. IP:' + self.request.remote_ip)
         self.ioloop = tornado.ioloop.IOLoop.instance()
-        
-        # initialize GPIO
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BCM)
-        GPIO.cleanup()
-
-        # read data using pin no
-        instance = dht11.DHT11(pin=4)
         
         self.send_websocket()
 
