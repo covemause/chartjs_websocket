@@ -1,12 +1,7 @@
-# chartjs_websocket
-chartjs+websocket
+## DHT11で温度、湿度のモニタリング
 
 
-# インストール
-
-
-
-# 各バージョン
+## 各バージョン
 python : 2.7.13
 tornedo : 5.1.1
 
@@ -16,4 +11,4 @@ tornedo : 5.1.1
 クライアント側：file://display.html
 
 
-<img src="https://github.com/covemause/documents/blob/master/xxx" />
+<img src="https://github.com/covemause/documents/blob/master/chartjs_websocket_dht11.JPG" />
